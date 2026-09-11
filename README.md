@@ -1,11 +1,10 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:F59E0B,45:EA580C,100:7C2D12&height=205&section=header&text=PRATHAM%20PANSARE&fontSize=46&fontColor=FFFFFF&fontAlignY=36&animation=fadeIn" width="100%" alt="Pratham Pansare" />
+<img src="./assets/profile-header.svg" width="100%" alt="Pratham Pansare — Full-stack engineer, AI security, developer tools" />
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://readme-typing-svg.demolab.com?font=Space+Grotesk&weight=500&size=19&duration=2600&pause=900&color=FB923C&center=true&vCenter=true&width=820&height=45&lines=Full-stack+Engineer+%C2%B7+AI+Security+%C2%B7+Developer+Tools;Temporal+Graphs+%C2%B7+Research+Systems+%C2%B7+Applied+ML;Building+systems+that+are+useful%2C+truthful%2C+and+hard+to+break" />
-  <img src="https://readme-typing-svg.demolab.com?font=Space+Grotesk&weight=500&size=19&duration=2600&pause=900&color=C2410C&center=true&vCenter=true&width=820&height=45&lines=Full-stack+Engineer+%C2%B7+AI+Security+%C2%B7+Developer+Tools;Temporal+Graphs+%C2%B7+Research+Systems+%C2%B7+Applied+ML;Building+systems+that+are+useful%2C+truthful%2C+and+hard+to+break" alt="Full-stack engineer focused on AI security, developer tools, and applied ML" />
-</picture>
+<br/>
+
+**Building security systems, developer intelligence, and research software with product-level execution.**
 
 <br/>
 
@@ -19,10 +18,6 @@
 <a href="mailto:prathamwork2511@gmail.com"><img src="https://img.shields.io/badge/EMAIL-EA580C?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" /></a>
 <a href="https://github.com/Pratham2511?tab=repositories"><img src="https://img.shields.io/badge/ALL_REPOS-27272A?style=for-the-badge&logo=github&logoColor=white" alt="All repositories" /></a>
 <a href="https://github.com/Pratham2511/My-Portfolio"><img src="https://img.shields.io/badge/PORTFOLIO-27272A?style=for-the-badge&logo=github&logoColor=white" alt="Portfolio" /></a>
-
-<br/><br/>
-
-<sub>INDIA · TYPESCRIPT / PYTHON · OPEN TO INTERESTING COLLABORATIONS</sub>
 
 </div>
 
@@ -133,6 +128,8 @@ I’m interested in technically ambitious work around **AI security, developer t
 
 <i>Build like a product. Secure like an adversary.</i>
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:7C2D12,50:EA580C,100:F59E0B&height=165&section=footer&text=BUILD%20%C2%B7%20BREAK%20%C2%B7%20LEARN%20%C2%B7%20SHIP&fontSize=24&fontColor=FFFFFF&fontAlignY=72&animation=fadeIn" width="100%" alt="Build Break Learn Ship" />
+<br/><br/>
+
+<img src="./assets/profile-footer.svg" width="100%" alt="Build Break Learn Ship" />
 
 </div>
