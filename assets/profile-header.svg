@@ -1,18 +1,24 @@
 <svg width="1200" height="300" viewBox="0 0 1200 300" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="300" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#18181B"/>
-      <stop offset="0.55" stop-color="#23180F"/>
-      <stop offset="1" stop-color="#3A1608"/>
+      <stop stop-color="#0B0712"/>
+      <stop offset="0.5" stop-color="#171026"/>
+      <stop offset="1" stop-color="#271044"/>
     </linearGradient>
-    <linearGradient id="accent" x1="170" y1="0" x2="1030" y2="0" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#F59E0B"/>
-      <stop offset="0.48" stop-color="#EA580C"/>
-      <stop offset="1" stop-color="#C2410C"/>
+    <linearGradient id="accent" x1="160" y1="0" x2="1040" y2="0" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7C3AED"/>
+      <stop offset="0.46" stop-color="#A855F7"/>
+      <stop offset="1" stop-color="#D8B4FE"/>
+    </linearGradient>
+    <linearGradient id="nameFill" x1="280" y1="0" x2="920" y2="0" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F5F3FF"/>
+      <stop offset="0.35" stop-color="#DDD6FE"/>
+      <stop offset="0.72" stop-color="#C084FC"/>
+      <stop offset="1" stop-color="#F5F3FF"/>
     </linearGradient>
     <linearGradient id="shine" x1="0" y1="0" x2="1" y2="0">
       <stop stop-color="#FFFFFF" stop-opacity="0"/>
-      <stop offset="0.5" stop-color="#FFFFFF" stop-opacity="0.78"/>
+      <stop offset="0.5" stop-color="#FFFFFF" stop-opacity="0.92"/>
       <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
     </linearGradient>
     <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
@@ -22,55 +28,64 @@
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
+    <filter id="nameGlow" x="-30%" y="-50%" width="160%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0.55 0 0 0 0.30  0 0.28 0 0 0.12  0 0 0.95 0 0.42  0 0 0 0.36 0"/>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
     <clipPath id="nameClip">
-      <text x="600" y="164" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="78" font-weight="900" letter-spacing="6">PRATHAM PANSARE</text>
+      <text x="600" y="168" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="82" font-weight="900" letter-spacing="7">PRATHAM PANSARE</text>
     </clipPath>
-    <pattern id="grid" width="36" height="36" patternUnits="userSpaceOnUse">
-      <path d="M36 0H0V36" stroke="#FFFFFF" stroke-opacity="0.035" stroke-width="1"/>
+    <pattern id="grid" width="38" height="38" patternUnits="userSpaceOnUse">
+      <path d="M38 0H0V38" stroke="#EDE9FE" stroke-opacity="0.035" stroke-width="1"/>
     </pattern>
   </defs>
 
   <rect width="1200" height="300" rx="24" fill="url(#bg)"/>
   <rect width="1200" height="300" rx="24" fill="url(#grid)"/>
 
-  <path d="M0 64H180L220 92H412" stroke="#F59E0B" stroke-opacity="0.38" stroke-width="2" stroke-dasharray="12 14">
-    <animate attributeName="stroke-dashoffset" from="0" to="-104" dur="4s" repeatCount="indefinite"/>
+  <ellipse cx="600" cy="150" rx="360" ry="110" fill="#7C3AED" opacity="0.08">
+    <animate attributeName="opacity" values="0.05;0.12;0.05" dur="4.6s" repeatCount="indefinite"/>
+  </ellipse>
+
+  <path d="M0 62H172L218 92H420" stroke="#8B5CF6" stroke-opacity="0.5" stroke-width="2" stroke-dasharray="12 14">
+    <animate attributeName="stroke-dashoffset" from="0" to="-104" dur="3.8s" repeatCount="indefinite"/>
   </path>
-  <path d="M1200 232H1008L966 204H782" stroke="#EA580C" stroke-opacity="0.42" stroke-width="2" stroke-dasharray="10 12">
-    <animate attributeName="stroke-dashoffset" from="0" to="88" dur="3.6s" repeatCount="indefinite"/>
+  <path d="M1200 234H1028L982 204H780" stroke="#C084FC" stroke-opacity="0.52" stroke-width="2" stroke-dasharray="10 12">
+    <animate attributeName="stroke-dashoffset" from="0" to="88" dur="3.4s" repeatCount="indefinite"/>
   </path>
 
-  <circle cx="204" cy="90" r="5" fill="#F59E0B" filter="url(#glow)">
-    <animate attributeName="opacity" values="0.35;1;0.35" dur="2s" repeatCount="indefinite"/>
+  <circle cx="202" cy="90" r="5" fill="#A855F7" filter="url(#glow)">
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="1.8s" repeatCount="indefinite"/>
   </circle>
-  <circle cx="983" cy="207" r="5" fill="#EA580C" filter="url(#glow)">
-    <animate attributeName="opacity" values="1;0.35;1" dur="2.4s" repeatCount="indefinite"/>
+  <circle cx="998" cy="207" r="5" fill="#C084FC" filter="url(#glow)">
+    <animate attributeName="opacity" values="1;0.3;1" dur="2.2s" repeatCount="indefinite"/>
   </circle>
 
-  <rect x="70" y="38" width="1060" height="224" rx="18" stroke="url(#accent)" stroke-width="1.5" stroke-opacity="0.65"/>
-  <path d="M70 84V38H116" stroke="#F59E0B" stroke-width="5"/>
-  <path d="M1084 262H1130V216" stroke="#EA580C" stroke-width="5"/>
+  <rect x="66" y="34" width="1068" height="232" rx="18" stroke="url(#accent)" stroke-width="1.5" stroke-opacity="0.72"/>
+  <path d="M66 84V34H116" stroke="#8B5CF6" stroke-width="5"/>
+  <path d="M1084 266H1134V216" stroke="#C084FC" stroke-width="5"/>
 
-  <text x="600" y="96" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" letter-spacing="5" fill="#FDBA74">FULL-STACK ENGINEER  /  AI SECURITY  /  DEVELOPER TOOLS</text>
+  <text x="600" y="94" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" letter-spacing="5" fill="#C4B5FD">FULL-STACK ENGINEER  /  AI SECURITY  /  DEVELOPER TOOLS</text>
 
-  <text x="600" y="164" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="78" font-weight="900" letter-spacing="6" fill="url(#accent)">PRATHAM PANSARE</text>
-  <text x="603" y="167" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="78" font-weight="900" letter-spacing="6" fill="none" stroke="#000000" stroke-opacity="0.35" stroke-width="2">PRATHAM PANSARE</text>
+  <text x="600" y="168" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="82" font-weight="900" letter-spacing="7" fill="url(#nameFill)" filter="url(#nameGlow)">PRATHAM PANSARE</text>
+  <text x="600" y="168" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="82" font-weight="900" letter-spacing="7" fill="url(#nameFill)" stroke="#A855F7" stroke-opacity="0.35" stroke-width="1.2">PRATHAM PANSARE</text>
 
   <g clip-path="url(#nameClip)">
-    <rect x="-240" y="98" width="180" height="92" fill="url(#shine)" transform="skewX(-18)">
-      <animate attributeName="x" from="-240" to="1320" dur="4.8s" repeatCount="indefinite"/>
+    <rect x="-250" y="96" width="190" height="102" fill="url(#shine)" transform="skewX(-18)">
+      <animate attributeName="x" from="-250" to="1330" dur="4.3s" repeatCount="indefinite"/>
     </rect>
   </g>
 
-  <text x="600" y="209" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="600" letter-spacing="3" fill="#E7E5E4">TEMPORAL GRAPHS · RESEARCH SYSTEMS · APPLIED ML</text>
+  <text x="600" y="213" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="600" letter-spacing="3" fill="#EDE9FE">TEMPORAL GRAPHS · RESEARCH SYSTEMS · APPLIED ML</text>
 
-  <g opacity="0.72">
-    <line x1="380" y1="236" x2="820" y2="236" stroke="#78716C" stroke-width="1"/>
-    <rect x="540" y="233" width="120" height="6" rx="3" fill="url(#accent)">
-      <animate attributeName="x" values="380;700;380" dur="5s" repeatCount="indefinite"/>
+  <g opacity="0.8">
+    <line x1="380" y1="239" x2="820" y2="239" stroke="#5B4B72" stroke-width="1"/>
+    <rect x="380" y="236" width="116" height="6" rx="3" fill="url(#accent)">
+      <animate attributeName="x" values="380;704;380" dur="4.6s" repeatCount="indefinite"/>
     </rect>
   </g>
 
-  <text x="92" y="282" font-family="Arial, Helvetica, sans-serif" font-size="11" letter-spacing="2" fill="#A8A29E">PRATHAM2511 / SYSTEM PROFILE</text>
-  <text x="1108" y="282" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="11" letter-spacing="2" fill="#A8A29E">INDIA · UTC+05:30</text>
+  <text x="92" y="284" font-family="Arial, Helvetica, sans-serif" font-size="11" letter-spacing="2" fill="#A78BFA">PRATHAM2511 / SYSTEM PROFILE</text>
+  <text x="1108" y="284" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="11" letter-spacing="2" fill="#A78BFA">INDIA · UTC+05:30</text>
 </svg>
