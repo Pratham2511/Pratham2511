@@ -8,16 +8,16 @@
 
 <br/>
 
-<img src="https://img.shields.io/badge/AI_SECURITY-B45309?style=flat-square&labelColor=18181B" alt="AI Security" />
-<img src="https://img.shields.io/badge/DEVELOPER_TOOLS-C2410C?style=flat-square&labelColor=18181B" alt="Developer Tools" />
-<img src="https://img.shields.io/badge/RESEARCH_SYSTEMS-D97706?style=flat-square&labelColor=18181B" alt="Research Systems" />
-<img src="https://img.shields.io/badge/APPLIED_ML-9A3412?style=flat-square&labelColor=18181B" alt="Applied ML" />
+<img src="https://img.shields.io/badge/AI_SECURITY-7C3AED?style=flat-square&labelColor=18181B" alt="AI Security" />
+<img src="https://img.shields.io/badge/DEVELOPER_TOOLS-8B5CF6?style=flat-square&labelColor=18181B" alt="Developer Tools" />
+<img src="https://img.shields.io/badge/RESEARCH_SYSTEMS-A855F7?style=flat-square&labelColor=18181B" alt="Research Systems" />
+<img src="https://img.shields.io/badge/APPLIED_ML-9333EA?style=flat-square&labelColor=18181B" alt="Applied ML" />
 
 <br/><br/>
 
-<a href="mailto:prathamwork2511@gmail.com"><img src="https://img.shields.io/badge/EMAIL-EA580C?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" /></a>
+<a href="mailto:prathamwork2511@gmail.com"><img src="https://img.shields.io/badge/EMAIL-7C3AED?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" /></a>
 <a href="https://github.com/Pratham2511?tab=repositories"><img src="https://img.shields.io/badge/ALL_REPOS-27272A?style=for-the-badge&logo=github&logoColor=white" alt="All repositories" /></a>
-<a href="https://github.com/Pratham2511/My-Portfolio"><img src="https://img.shields.io/badge/PORTFOLIO-27272A?style=for-the-badge&logo=github&logoColor=white" alt="Portfolio" /></a>
+<a href="https://prathampansare.vercel.app"><img src="https://img.shields.io/badge/PORTFOLIO-8B5CF6?style=for-the-badge&logo=vercel&logoColor=white" alt="Portfolio" /></a>
 
 </div>
 
@@ -38,7 +38,7 @@ Turns raw cybersecurity telemetry into temporal heterogeneous graphs, causal att
 <br/><br/>
 <code>Python</code> <code>PyTorch</code> <code>PyG</code> <code>GraphSAGE</code> <code>FastAPI</code> <code>Next.js</code>
 <br/><br/>
-<a href="https://github.com/Pratham2511/TGDetect-Temporal-Graph"><img src="https://img.shields.io/badge/SOURCE-B45309?style=flat-square&logo=github&logoColor=white" alt="TGDetect source" /></a>
+<a href="https://github.com/Pratham2511/TGDetect-Temporal-Graph"><img src="https://img.shields.io/badge/SOURCE-7C3AED?style=flat-square&logo=github&logoColor=white" alt="TGDetect source" /></a>
 </td>
 <td width="50%" valign="top">
 <h3>02 · Verbis</h3>
@@ -48,7 +48,7 @@ Transforms natural-language questions into SQL/NoSQL, explores schemas, generate
 <br/><br/>
 <code>TypeScript</code> <code>React</code> <code>Python</code> <code>FastAPI</code> <code>VS Code API</code>
 <br/><br/>
-<a href="https://github.com/Pratham2511/Verbis-Intelligent-Database-Assistant"><img src="https://img.shields.io/badge/SOURCE-C2410C?style=flat-square&logo=github&logoColor=white" alt="Verbis source" /></a>
+<a href="https://github.com/Pratham2511/Verbis-Intelligent-Database-Assistant"><img src="https://img.shields.io/badge/SOURCE-8B5CF6?style=flat-square&logo=github&logoColor=white" alt="Verbis source" /></a>
 <a href="https://verbis-lp.vercel.app/"><img src="https://img.shields.io/badge/PRODUCT_PAGE-27272A?style=flat-square&logo=vercel&logoColor=white" alt="Verbis product page" /></a>
 </td>
 </tr>
@@ -61,7 +61,7 @@ Searches academic providers directly, preserves source passages with provenance,
 <br/><br/>
 <code>Next.js</code> <code>TypeScript</code> <code>PostgreSQL</code> <code>Prisma</code> <code>Research APIs</code>
 <br/><br/>
-<a href="https://github.com/Pratham2511/Kivo-Research-Discovery-Workspace"><img src="https://img.shields.io/badge/SOURCE-D97706?style=flat-square&logo=github&logoColor=white" alt="ScholarNexus source" /></a>
+<a href="https://github.com/Pratham2511/Kivo-Research-Discovery-Workspace"><img src="https://img.shields.io/badge/SOURCE-A855F7?style=flat-square&logo=github&logoColor=white" alt="ScholarNexus source" /></a>
 </td>
 <td width="50%" valign="top">
 <h3>04 · ShetVaidya</h3>
@@ -71,7 +71,7 @@ A production-oriented multi-service system combining MobileNetV2 inference, loca
 <br/><br/>
 <code>React</code> <code>FastAPI</code> <code>TensorFlow</code> <code>PostgreSQL</code> <code>Redis</code> <code>R2</code>
 <br/><br/>
-<a href="https://github.com/Pratham2511/ML-Based-plant-disease-analysier-"><img src="https://img.shields.io/badge/SOURCE-9A3412?style=flat-square&logo=github&logoColor=white" alt="ShetVaidya source" /></a>
+<a href="https://github.com/Pratham2511/ML-Based-plant-disease-analysier-"><img src="https://img.shields.io/badge/SOURCE-9333EA?style=flat-square&logo=github&logoColor=white" alt="ShetVaidya source" /></a>
 <a href="https://ml-based-plant-disease-analysier.vercel.app/"><img src="https://img.shields.io/badge/LIVE-27272A?style=flat-square&logo=vercel&logoColor=white" alt="ShetVaidya live" /></a>
 </td>
 </tr>
@@ -83,19 +83,41 @@ A production-oriented multi-service system combining MobileNetV2 inference, loca
 
 <div align="center">
   <h2>◆ ENGINEERING STACK ◆</h2>
-  <p><i>One stack. No badge wall twice.</i></p>
+  <p><i>Tools I actually build with, grouped by where they matter.</i></p>
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://skillicons.dev/icons?i=ts,js,python,kotlin,nextjs,react,tailwind,fastapi,prisma,postgres,redis,pytorch,tensorflow,docker,githubactions,figma&theme=dark&perline=16" />
-  <img src="https://skillicons.dev/icons?i=ts,js,python,kotlin,nextjs,react,tailwind,fastapi,prisma,postgres,redis,pytorch,tensorflow,docker,githubactions,figma&theme=light&perline=16" alt="Technology stack" />
-</picture>
+  <b>LANGUAGES</b>
+  <br/><br/>
+  <img src="https://img.shields.io/badge/TypeScript-7C3AED?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/JavaScript-8B5CF6?style=for-the-badge&logo=javascript&logoColor=white" alt="JavaScript" />
+  <img src="https://img.shields.io/badge/Python-A855F7?style=for-the-badge&logo=python&logoColor=white" alt="Python" />
+  <img src="https://img.shields.io/badge/Kotlin-9333EA?style=for-the-badge&logo=kotlin&logoColor=white" alt="Kotlin" />
 
-<br/><br/>
+  <br/><br/>
+  <b>PRODUCT & SYSTEMS</b>
+  <br/><br/>
+  <img src="https://img.shields.io/badge/Next.js-27272A?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="Next.js" />
+  <img src="https://img.shields.io/badge/React-7C3AED?style=for-the-badge&logo=react&logoColor=white" alt="React" />
+  <img src="https://img.shields.io/badge/Tailwind-8B5CF6?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Tailwind CSS" />
+  <img src="https://img.shields.io/badge/FastAPI-A855F7?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI" />
+  <img src="https://img.shields.io/badge/Prisma-27272A?style=for-the-badge&logo=prisma&logoColor=white" alt="Prisma" />
+  <img src="https://img.shields.io/badge/PostgreSQL-7C3AED?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL" />
+  <img src="https://img.shields.io/badge/Redis-8B5CF6?style=for-the-badge&logo=redis&logoColor=white" alt="Redis" />
 
-<code>Languages</code> TypeScript · JavaScript · Python · Kotlin<br/>
-<code>Systems</code> Next.js · React · FastAPI · Prisma · PostgreSQL · Redis<br/>
-<code>AI / ML</code> PyTorch · PyTorch Geometric · GraphSAGE · TensorFlow<br/>
-<code>Delivery</code> Docker · GitHub Actions · Bun · Figma
+  <br/><br/>
+  <b>AI / ML</b>
+  <br/><br/>
+  <img src="https://img.shields.io/badge/PyTorch-7C3AED?style=for-the-badge&logo=pytorch&logoColor=white" alt="PyTorch" />
+  <img src="https://img.shields.io/badge/PyTorch_Geometric-8B5CF6?style=for-the-badge&logo=pytorch&logoColor=white" alt="PyTorch Geometric" />
+  <img src="https://img.shields.io/badge/GraphSAGE-A855F7?style=for-the-badge&logoColor=white" alt="GraphSAGE" />
+  <img src="https://img.shields.io/badge/TensorFlow-9333EA?style=for-the-badge&logo=tensorflow&logoColor=white" alt="TensorFlow" />
+
+  <br/><br/>
+  <b>DELIVERY & DESIGN</b>
+  <br/><br/>
+  <img src="https://img.shields.io/badge/Docker-7C3AED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker" />
+  <img src="https://img.shields.io/badge/GitHub_Actions-27272A?style=for-the-badge&logo=githubactions&logoColor=white" alt="GitHub Actions" />
+  <img src="https://img.shields.io/badge/Bun-8B5CF6?style=for-the-badge&logo=bun&logoColor=white" alt="Bun" />
+  <img src="https://img.shields.io/badge/Figma-A855F7?style=for-the-badge&logo=figma&logoColor=white" alt="Figma" />
 
 </div>
 
@@ -121,7 +143,8 @@ A production-oriented multi-service system combining MobileNetV2 inference, loca
 
 I’m interested in technically ambitious work around **AI security, developer tooling, research infrastructure, and applied ML**.
 
-<a href="mailto:prathamwork2511@gmail.com"><img src="https://img.shields.io/badge/LET'S_BUILD-EA580C?style=for-the-badge&logo=gmail&logoColor=white" alt="Email Pratham" /></a>
+<a href="mailto:prathamwork2511@gmail.com"><img src="https://img.shields.io/badge/LET'S_BUILD-7C3AED?style=for-the-badge&logo=gmail&logoColor=white" alt="Email Pratham" /></a>
+<a href="https://prathampansare.vercel.app"><img src="https://img.shields.io/badge/PORTFOLIO-8B5CF6?style=for-the-badge&logo=vercel&logoColor=white" alt="Portfolio" /></a>
 <a href="https://github.com/Pratham2511"><img src="https://img.shields.io/badge/@PRATHAM2511-27272A?style=for-the-badge&logo=github&logoColor=white" alt="GitHub profile" /></a>
 
 <br/><br/>
