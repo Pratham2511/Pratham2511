@@ -39,6 +39,7 @@ Turns raw cybersecurity telemetry into temporal heterogeneous graphs, causal att
 <code>Python</code> <code>PyTorch</code> <code>PyG</code> <code>GraphSAGE</code> <code>FastAPI</code> <code>Next.js</code>
 <br/><br/>
 <a href="https://github.com/Pratham2511/TGDetect-Temporal-Graph"><img src="https://img.shields.io/badge/SOURCE-7C3AED?style=flat-square&logo=github&logoColor=white" alt="TGDetect source" /></a>
+<a href="https://tgdetect-lp.vercel.app"><img src="https://img.shields.io/badge/PRODUCT_PAGE-27272A?style=flat-square&logo=vercel&logoColor=white" alt="TGDetect product page" /></a>
 </td>
 <td width="50%" valign="top">
 <h3>02 · Verbis</h3>
