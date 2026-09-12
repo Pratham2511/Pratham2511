@@ -55,14 +55,15 @@ Transforms natural-language questions into SQL/NoSQL, explores schemas, generate
 </tr>
 <tr>
 <td width="50%" valign="top">
-<h3>03 · ScholarNexus</h3>
-<b>The Evidence Desk — local-first scholarly research workspace.</b>
+<h3>03 · Kivo</h3>
+<b>Local-first scholarly research workspace for evidence-driven literature review.</b>
 <br/><br/>
 Searches academic providers directly, preserves source passages with provenance, supports screening and evidence matrices, and exports reproducible research records. The baseline research workflow remains usable with AI disabled.
 <br/><br/>
 <code>Next.js</code> <code>TypeScript</code> <code>PostgreSQL</code> <code>Prisma</code> <code>Research APIs</code>
 <br/><br/>
-<a href="https://github.com/Pratham2511/Kivo-Research-Discovery-Workspace"><img src="https://img.shields.io/badge/SOURCE-A855F7?style=flat-square&logo=github&logoColor=white" alt="ScholarNexus source" /></a>
+<a href="https://github.com/Pratham2511/Kivo-Research-Discovery-Workspace"><img src="https://img.shields.io/badge/SOURCE-A855F7?style=flat-square&logo=github&logoColor=white" alt="Kivo source" /></a>
+<a href="https://kivo-nu-weld.vercel.app"><img src="https://img.shields.io/badge/LIVE-27272A?style=flat-square&logo=vercel&logoColor=white" alt="Kivo live" /></a>
 </td>
 <td width="50%" valign="top">
 <h3>04 · ShetVaidya</h3>
