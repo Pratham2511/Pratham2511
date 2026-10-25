@@ -158,9 +158,3 @@ I’m interested in technically ambitious work around **AI security, developer t
 <img src="./assets/profile-footer.svg" width="100%" alt="Build Break Learn Ship" />
 
 </div>
-
-<br/><br/>
-
-<p align="center">
-  <img src="https://komarev.com/ghpvc/?username=Pratham2511&amp;label=Profile+views&amp;color=7C3AED&amp;style=flat-square" alt="Profile views" />
-</p>
