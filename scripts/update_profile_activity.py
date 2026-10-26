@@ -4,6 +4,7 @@ import argparse
 from collections import Counter
 from datetime import date, datetime, timezone
 from html import escape
+from html.parser import HTMLParser
 from zoneinfo import ZoneInfo
 import json
 import os
@@ -16,17 +17,114 @@ import urllib.error
 import urllib.request
 
 USER = 'Pratham2511'
+CALENDAR_URL = f'https://github.com/users/{USER}/contributions'
 PR_FIELDS = 'number title url repository { nameWithOwner url owner { login } }'
 CONNECTION = 'issueCount pageInfo { hasNextPage endCursor } nodes { ... on PullRequest { %s } }' % PR_FIELDS
 MERGED_QUERY = f'is:pr is:merged is:public author:{USER} -user:{USER} sort:updated-desc'
 OPEN_QUERY = f'is:pr is:open is:public author:{USER} -user:{USER} sort:updated-desc'
 INITIAL = '''query($mergedQuery:String!,$openQuery:String!){
- user(login:"Pratham2511"){login contributionsCollection{contributionCalendar{
- totalContributions weeks{contributionDays{date contributionCount}}}}}
+ user(login:"Pratham2511"){login}
  merged:search(query:$mergedQuery,type:ISSUE,first:100){%s}
  opened:search(query:$openQuery,type:ISSUE,first:100){%s}}
 ''' % (CONNECTION, CONNECTION)
 PAGE = 'query($query:String!,$cursor:String!){result:search(query:$query,type:ISSUE,first:100,after:$cursor){%s}}' % CONNECTION
+
+
+class ProfileCalendar(HTMLParser):
+    """Read the visible calendar, including publicly shared anonymous private counts."""
+
+    def __init__(self):
+        super().__init__()
+        self.cells = {}
+        self.tooltips = {}
+        self.heading = []
+        self.capture = None
+        self.text = []
+
+    def handle_starttag(self, tag, attrs):
+        attrs = dict(attrs)
+        if 'ContributionCalendar-day' in attrs.get('class', '').split() and 'data-date' in attrs:
+            identity = attrs.get('id')
+            day = attrs['data-date']
+            if not identity or identity in self.cells or day in self.cells.values():
+                raise ValueError('Duplicate or missing calendar-day identity.')
+            date.fromisoformat(day)
+            self.cells[identity] = day
+        if tag == 'h2' and attrs.get('id') == 'js-contribution-activity-description':
+            self.capture = ('h2', 'heading')
+            self.text = []
+        elif tag == 'tool-tip' and attrs.get('for'):
+            self.capture = ('tool-tip', attrs['for'])
+            self.text = []
+
+    def handle_data(self, text):
+        if self.capture:
+            self.text.append(text)
+
+    def handle_endtag(self, tag):
+        if self.capture and tag == self.capture[0]:
+            _, identity = self.capture
+            text = ' '.join(''.join(self.text).split())
+            if identity == 'heading':
+                self.heading.append(text)
+            else:
+                if identity in self.tooltips:
+                    raise ValueError('Duplicate calendar-day tooltip.')
+                self.tooltips[identity] = text
+            self.capture = None
+
+    def calendar(self):
+        if len(self.heading) != 1 or not 365 <= len(self.cells) <= 371:
+            raise ValueError('Missing or incomplete past-year profile calendar.')
+        total = re.fullmatch(r'([\d,]+) contributions? in the last year', self.heading[0])
+        if not total:
+            raise ValueError('Unexpected profile calendar heading.')
+        days = []
+        for identity, day in self.cells.items():
+            tooltip = self.tooltips.get(identity, '')
+            count = re.fullmatch(r'([\d,]+) contributions? on .+\.', tooltip)
+            if re.fullmatch(r'No contributions on .+\.', tooltip):
+                value = 0
+            elif count:
+                value = int(count[1].replace(',', ''))
+            else:
+                raise ValueError('Missing or unexpected calendar-day count.')
+            days.append({'date': day, 'contributionCount': value})
+        days.sort(key=lambda day: day['date'])
+        dates = [date.fromisoformat(day['date']) for day in days]
+        if any((b - a).days != 1 for a, b in zip(dates, dates[1:])):
+            raise ValueError('Profile calendar days are not consecutive.')
+        total = int(total[1].replace(',', ''))
+        if sum(day['contributionCount'] for day in days) != total:
+            raise ValueError('Profile calendar heading and daily totals disagree.')
+        return {'totalContributions': total, 'weeks': [{'contributionDays': days}]}
+
+
+def fetch_calendar():
+    # Public page only: no browser session, Authorization header or personal token.
+    request = urllib.request.Request(CALENDAR_URL, headers={
+        'User-Agent': 'Pratham2511-profile-activity', 'Accept-Language': 'en-US,en;q=0.9'})
+    for attempt in range(2):
+        try:
+            with urllib.request.urlopen(request, timeout=30) as response:
+                document = response.read(2_000_001)
+            if len(document) > 2_000_000:
+                raise ValueError('Unexpectedly large profile calendar response.')
+            break
+        except urllib.error.HTTPError as error:
+            if error.code in (502, 503, 504) and attempt == 0:
+                time.sleep(2)
+                continue
+            raise RuntimeError(f'Profile calendar returned HTTP {error.code}; previous cards retained.') from None
+        except (urllib.error.URLError, TimeoutError):
+            if attempt == 0:
+                time.sleep(2)
+                continue
+            raise RuntimeError('Profile calendar unavailable; previous cards retained.') from None
+    parser = ProfileCalendar()
+    parser.feed(document.decode('utf-8'))
+    parser.close()
+    return parser.calendar()
 
 
 def api(query, variables, token):
@@ -77,6 +175,7 @@ def collect():
                 raise RuntimeError('Search changed during pagination; retry on the next scheduled run.')
             connection['nodes'].extend(page['nodes'])
             connection['pageInfo'] = page['pageInfo']
+    data['user']['contributionsCollection'] = {'contributionCalendar': fetch_calendar()}
     return data
 
 
@@ -125,7 +224,7 @@ def summarize(data, generated_at):
         longest = max(longest, run)
     counts = Counter(x['repository'] for x in merged)
     ranking = sorted(counts.items(), key=lambda x: (-x[1], x[0].casefold()))
-    return {'user': USER, 'updatedAtUTC': generated_at, 'windowStart': days[0]['date'],
+    return {'user': USER, 'updatedAtUTC': generated_at, 'calendarSource': CALENDAR_URL, 'windowStart': days[0]['date'],
             'windowEnd': days[-1]['date'], 'contributions': calendar['totalContributions'],
             'currentStreakDays': streak, 'longestStreakInWindowDays': longest, 'mergedAuthoredPRs': len(merged),
             'externalRepositoriesWithMergedPRs': len(counts),

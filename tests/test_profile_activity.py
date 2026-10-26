@@ -1,5 +1,6 @@
 """Regression checks for truthful aggregation, pagination and safe SVG output."""
 import copy
+from datetime import date, timedelta
 import importlib.util
 import io
 import json
@@ -33,7 +34,68 @@ def fixture():
                    'nodes': [pr('other/beta', 4)]}}
 
 
+def calendar_html():
+    """Synthetic profile HTML; order follows GitHub's weekday rows, not dates."""
+    cells, tips = [], []
+    for n in range(365):
+        day = date(2025, 1, 1) + timedelta(days=n)
+        count = {0: 1, 364: 2}.get(n, 0)
+        cells.append(f'<td class="ContributionCalendar-day" data-date="{day}" id="day-{n}"></td>')
+        words = f'{count} contribution' + ('s' if count != 1 else '') if count else 'No contributions'
+        tips.append(f'<tool-tip for="day-{n}">{words} on {day:%B} {day.day}th.</tool-tip>')
+    heading = '<h2 id="js-contribution-activity-description">3\n contributions\n in the last year</h2>'
+    return heading + ''.join(reversed(cells)) + ''.join(tips)
+
+
+def parse_calendar(document):
+    parser = activity.ProfileCalendar()
+    parser.feed(document)
+    parser.close()
+    return parser.calendar()
+
+
 class ActivityTests(unittest.TestCase):
+    def test_visible_calendar_includes_all_shared_counts_and_sorts_weekday_rows(self):
+        calendar = parse_calendar(calendar_html())
+        days = calendar['weeks'][0]['contributionDays']
+        self.assertEqual(calendar['totalContributions'], 3)
+        self.assertEqual(days[0], {'date': '2025-01-01', 'contributionCount': 1})
+        self.assertEqual(days[-1], {'date': '2025-12-31', 'contributionCount': 2})
+        self.assertEqual(sum(day['contributionCount'] for day in days), 3)
+
+    def test_calendar_rejects_missing_changed_duplicate_or_inconsistent_content(self):
+        document = calendar_html()
+        variants = [document.replace('day-0', 'day-1'),
+                    document.replace('2025-01-01', '2025-01-02'),
+                    document.replace('data-date="2025-01-01"', 'data-date="2024-12-31"'),
+                    document.replace('<tool-tip for="day-0">', '<tool-tip for="missing">'),
+                    document.replace('No contributions on January 2th.', 'Count unavailable'),
+                    document.replace('3\n contributions', '4\n contributions'),
+                    document.replace('in the last year', 'in 2025'),
+                    '<html>Sign in to continue</html>']
+        for variant in variants:
+            with self.subTest(variant=variant[:100]):
+                with self.assertRaises(ValueError):
+                    parse_calendar(variant)
+
+    def test_public_calendar_request_does_not_send_api_credentials(self):
+        response = io.BytesIO(calendar_html().encode())
+        with patch.dict(activity.os.environ, {'GH_TOKEN': 'synthetic-test-only'}), patch.object(activity.urllib.request, 'urlopen', return_value=response) as request:
+            self.assertEqual(activity.fetch_calendar()['totalContributions'], 3)
+        actual = request.call_args.args[0]
+        self.assertEqual(actual.full_url, activity.CALENDAR_URL)
+        self.assertIsNone(actual.get_header('Authorization'))
+        self.assertIsNone(actual.get_header('Cookie'))
+
+    def test_collector_uses_visible_calendar_instead_of_lower_api_count(self):
+        data = fixture()
+        visible = parse_calendar(calendar_html())
+        data['user']['contributionsCollection']['contributionCalendar']['totalContributions'] = 1
+        with patch.dict(activity.os.environ, {'GH_TOKEN': 'synthetic-test-only'}), patch.object(activity, 'api', return_value=data), patch.object(activity, 'fetch_calendar', return_value=visible):
+            result = activity.summarize(activity.collect(), '2026-01-01T00:00:00Z')
+        self.assertEqual(result['contributions'], 3)
+        self.assertEqual(result['calendarSource'], activity.CALENDAR_URL)
+
     def test_streak_and_external_repository_ranking_use_different_denominators(self):
         result = activity.summarize(fixture(), '2026-10-03T12:00:00+00:00')
         self.assertEqual(result['longestStreakInWindowDays'], 2)
@@ -83,7 +145,8 @@ class ActivityTests(unittest.TestCase):
         data['merged']['nodes'] = data['merged']['nodes'][:1]
         data['merged']['pageInfo'] = {'hasNextPage': True, 'endCursor': 'next'}
         page = {'result': {'issueCount': 3, 'nodes': remainder, 'pageInfo': {'hasNextPage': False, 'endCursor': 'end'}}}
-        with patch.dict(activity.os.environ, {'GH_TOKEN': 'synthetic-test-only'}), patch.object(activity, 'api', side_effect=[data, page]) as api:
+        calendar = fixture()['user']['contributionsCollection']['contributionCalendar']
+        with patch.dict(activity.os.environ, {'GH_TOKEN': 'synthetic-test-only'}), patch.object(activity, 'api', side_effect=[data, page]) as api, patch.object(activity, 'fetch_calendar', return_value=calendar):
             result = activity.collect()
         self.assertEqual(len(result['merged']['nodes']), 3)
         self.assertEqual(api.call_count, 2)
