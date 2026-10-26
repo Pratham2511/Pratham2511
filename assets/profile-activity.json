@@ -1,0 +1,34 @@
+{
+  "user": "Pratham2511",
+  "updatedAtUTC": "2026-10-26T19:17:47+00:00",
+  "windowStart": "2025-10-26",
+  "windowEnd": "2026-10-27",
+  "contributions": 531,
+  "currentStreakDays": 11,
+  "longestStreakInWindowDays": 12,
+  "mergedAuthoredPRs": 44,
+  "externalRepositoriesWithMergedPRs": 12,
+  "topRepositories": [
+    {
+      "repository": "sara-czasak/py-simple-wrap",
+      "mergedPRs": 9
+    },
+    {
+      "repository": "codercops/chatcops",
+      "mergedPRs": 6
+    },
+    {
+      "repository": "petertzy/deeplocal-chat-adapter",
+      "mergedPRs": 6
+    },
+    {
+      "repository": "AutomatosAI/automatos-ai",
+      "mergedPRs": 5
+    },
+    {
+      "repository": "yakew7/DesignHub",
+      "mergedPRs": 4
+    }
+  ],
+  "openPRCount": 2
+}

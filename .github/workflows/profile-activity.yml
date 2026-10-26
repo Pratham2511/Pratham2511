@@ -1,0 +1,51 @@
+name: Refresh profile activity
+
+on:
+  schedule:
+    - cron: '23 3,15 * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - scripts/update_profile_activity.py
+      - .github/workflows/profile-activity.yml
+      - tests/test_profile_activity.py
+
+permissions:
+  contents: write
+
+concurrency:
+  group: profile-activity
+  cancel-in-progress: false
+
+jobs:
+  update:
+    if: github.repository == 'Pratham2511/Pratham2511'
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Check out profile repository
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          ref: main
+          fetch-depth: 1
+
+      - name: Check aggregation and safe rendering
+        run: python3 -m unittest discover -s tests -v
+
+      - name: Generate public activity graphics
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 scripts/update_profile_activity.py
+
+      - name: Commit only generated activity assets
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- assets/profile-stats.svg assets/profile-stats-mobile.svg assets/profile-stats-light.svg assets/profile-stats-mobile-light.svg assets/profile-activity.json
+          if git diff --cached --quiet; then
+            echo 'Activity assets are unchanged.'
+            exit 0
+          fi
+          git commit -m 'chore: refresh profile activity'
+          git push origin HEAD:main
