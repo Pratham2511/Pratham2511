@@ -2,7 +2,7 @@ name: Refresh profile activity
 
 on:
   schedule:
-    - cron: '23 3,15 * * *'
+    - cron: '23 */2 * * *'
   workflow_dispatch:
   push:
     branches: [main]
