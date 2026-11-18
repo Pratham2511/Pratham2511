@@ -1,11 +1,11 @@
 {
   "user": "Pratham2511",
-  "updatedAtUTC": "2026-11-17T22:28:31+00:00",
+  "updatedAtUTC": "2026-11-18T07:41:41+00:00",
   "calendarSource": "https://github.com/users/Pratham2511/contributions",
   "windowStart": "2025-11-16",
-  "windowEnd": "2026-11-17",
-  "contributions": 685,
-  "currentStreakDays": 5,
+  "windowEnd": "2026-11-18",
+  "contributions": 687,
+  "currentStreakDays": 1,
   "longestStreakInWindowDays": 16,
   "mergedAuthoredPRs": 66,
   "externalRepositoriesWithMergedPRs": 22,
@@ -31,5 +31,5 @@
       "mergedPRs": 4
     }
   ],
-  "openPRCount": 6
+  "openPRCount": 7
 }
